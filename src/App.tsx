@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import TaskItem from './components/TaskItem';
 import './App.css';
 
 export interface Task {
@@ -17,6 +18,11 @@ function App() {
   return(
     <div className='app-container'>
       <h1>Ma To-Do List</h1>
+      <ul className="task-list">
+        {tasks.map(task => (
+          <TaskItem key={task.id} task={task} />
+        ))}
+      </ul>
     </div>
   )
 }

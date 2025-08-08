@@ -7,4 +7,38 @@
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-item{
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.task-item.completed span {
+  text-decoration: line-through;
+  color: #aaa;
+}
+.task-item span {
+  flex-grow: 1;
+  margin-left: 0.8rem;
+}
+
+.task-item button {
+  background: none;
+  border: none;
+  color: #ff4d4f;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0; 
+  transition: opacity 0.2s;
+}
+
+.task-item:hover button {
+  opacity: 1; 
+}
 
