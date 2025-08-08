@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import TaskItem from './components/TaskItem';
+import AddTaskForm from './components/AddTaskForm';
 import './App.css';
 
 export interface Task {
@@ -15,9 +16,19 @@ function App() {
   {id :3, text: 'Publier sur Github', completed: false},
 ]);
 
+const handeAddTask = (text: string) => {
+  const newTask: Task = {
+    id: Date.now(),
+    text : text,
+    completed: false,
+  };
+  setTasks([...tasks, newTask]); 
+}
+
   return(
     <div className='app-container'>
       <h1>Ma To-Do List</h1>
+      <AddTaskForm onAddTask={handeAddTask} />
       <ul className="task-list">
         {tasks.map(task => (
           <TaskItem key={task.id} task={task} />

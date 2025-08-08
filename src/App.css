@@ -42,3 +42,30 @@
   opacity: 1; 
 }
 
+.add-task-form {
+  display: flex;
+  margin-bottom: 1.5rem;
+  gap: 0.5rem;
+}
+
+.add-task-form input {
+  flex-grow: 1;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.add-task-form button {
+  padding: 0.8rem 1.2rem;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.add-task-form button:hover {
+  background-color: #0056b3;
+}
