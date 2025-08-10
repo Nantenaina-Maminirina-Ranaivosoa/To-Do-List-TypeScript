@@ -1,48 +1,58 @@
-import { useState } from 'react';
-import TaskItem from './components/TaskItem';
-import AddTaskForm from './components/AddTaskForm';
-import './App.css';
+import { useState } from "react";
+import TaskItem from "./components/TaskItem";
+import AddTaskForm from "./components/AddTaskForm";
+import "./App.css";
 
 export interface Task {
-    id: number;
-    text : string;
-    completed: boolean;
-  }
+  id: number;
+  text: string;
+  completed: boolean;
+}
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([
-  {id :1, text: 'Apprendre TypeScript', completed: true},
-  {id :2, text: 'Créer une To-Do List', completed: false},
-  {id :3, text: 'Publier sur Github', completed: false},
-]);
+    { id: 1, text: "Apprendre TypeScript", completed: true },
+    { id: 2, text: "Créer une To-Do List", completed: false },
+    { id: 3, text: "Publier sur Github", completed: false },
+  ]);
 
-const handeAddTask = (text: string) => {
-  const newTask: Task = {
-    id: Date.now(),
-    text : text,
-    completed: false,
+  const handeAddTask = (text: string) => {
+    const newTask: Task = {
+      id: Date.now(),
+      text: text,
+      completed: false,
+    };
+    setTasks([...tasks, newTask]);
   };
-  setTasks([...tasks, newTask]); 
-}
 
-const handleToggleTask = (id: number) => {
-setTasks(tasks.map(task =>
-  task.id === id? { ... task, completed: !task.completed} : task
-)
-)
-}
+  const handleToggleTask = (id: number) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
+  };
 
-  return(
-    <div className='app-container'>
+  const handleDeleteTask = (id: number) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
+  return (
+    <div className="app-container">
       <h1>Ma To-Do List</h1>
 
       <AddTaskForm onAddTask={handeAddTask} />
       <ul className="task-list">
-        {tasks.map(task => (
-          <TaskItem key={task.id} task={task} onToggleTask={handleToggleTask}/>
+        {tasks.map((task) => (
+          <TaskItem
+            key={task.id}
+            task={task}
+            onToggleTask={handleToggleTask}
+            onDeleteTask={handleDeleteTask}
+          />
         ))}
       </ul>
     </div>
-  )
+  );
 }
-  export default App;
+export default App;
